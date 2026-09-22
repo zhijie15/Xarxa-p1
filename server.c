@@ -139,7 +139,7 @@ int main(int argc, char *argv[]) {
 					if(b == 0){
 						send(new_socket, "Error: Divisió per zero\n", strlen("Error: Divisió per zero\n"), 0);
 					} else {
-						snprintf(reposta, BUFFER_SIZE, "Resultat: %f\n", (float)a / b);
+						snprintf(reposta, BUFFER_SIZE, "Resultat: %.2f\n", (float)a / b);
 						send(new_socket, reposta, strlen(reposta), 0);
 					}
 				}
