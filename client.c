@@ -74,7 +74,7 @@ int main(int argc, char *argv[]) {
 
 	int option;
 	int num1, num2;
-	
+
 	while (1) {
 		memset(buffer, 0, sizeof(buffer)); // Netegem el buffer
 
@@ -230,7 +230,7 @@ int main(int argc, char *argv[]) {
                 break;
             }
 			
-			snprintf(cadena, BUFFER_SIZE, "MUL:%d:%d", num1, num2);
+			snprintf(cadena, BUFFER_SIZE, "DIV:%d:%d", num1, num2);
 			send(sock, cadena, strlen(cadena), 0);
 			memset(buffer, 0, BUFFER_SIZE);
 			recv(sock, buffer, BUFFER_SIZE,0);
