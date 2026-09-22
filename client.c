@@ -73,7 +73,8 @@ int main(int argc, char *argv[]) {
 	printf("Connectat al servidor. Podeu començar a enviar missatges.\n");
 
 	int option;
-
+	int num1, num2;
+	
 	while (1) {
 		memset(buffer, 0, sizeof(buffer)); // Netegem el buffer
 
@@ -148,8 +149,7 @@ int main(int argc, char *argv[]) {
 			break;
 
 		case 3:
-			// Implementar Opció 3			int num1, num2;
-			int num1, num2;
+			// Implementar Opció 3		
             printf("Introdueix el primer número: ");
             if (scanf("%d", &num1) != 1) {
                 printf("Error: Cal introduir un número enter.\n");
@@ -173,7 +173,6 @@ int main(int argc, char *argv[]) {
 
 		case 4:
 			// Implementar Opció 4
-			int num1, num2;
             printf("Introdueix el primer número: ");
             if (scanf("%d", &num1) != 1) {
                 printf("Error: Cal introduir un número enter.\n");
@@ -196,7 +195,6 @@ int main(int argc, char *argv[]) {
 
 		case 5:
 			// Implementar Opció 5
-			int num1, num2;
             printf("Introdueix el primer número: ");
             if (scanf("%d", &num1) != 1) {
                 printf("Error: Cal introduir un número enter.\n");
@@ -218,7 +216,6 @@ int main(int argc, char *argv[]) {
 			printf("Resposta del servidor: %s\n", buffer);
 			break;
 		case 6:			
-			int num1, num2;
             printf("Introdueix el primer número: ");
             if (scanf("%d", &num1) != 1) {
                 printf("Error: Cal introduir un número enter.\n");
