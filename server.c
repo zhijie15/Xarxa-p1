@@ -78,9 +78,9 @@ int main(int argc, char *argv[]) {
 	while (1) {
 		// Acceptar connexions de clients
 		// Afegiu comentari explicant els arguments i per què hi ha i cal new_socket si ja tenim sock
-		int clave_req;
-		int autenticat = 0;
-		int a, b;
+		int clave_req; //clave de autenticació
+		int autenticat = 0; // variable per controlar si el client està autenticat o no
+		int a, b; // variables per a les operacions
 		char reposta[BUFFER_SIZE];
 		if ((new_socket = accept(sock, (struct sockaddr *)&address, (socklen_t *)&addrlen)) < 0) {
 			perror("Error en acceptar la connexió");

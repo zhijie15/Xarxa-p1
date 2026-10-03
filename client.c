@@ -96,11 +96,12 @@ int main(int argc, char *argv[]) {
 
 		scanf("%d", &option);
 		while (getchar() != '\n');  // buida el buffer fins al salt de línia
-
+		int option_check = 1;
 		switch (option)
 		{
 		case 1:
 		case 7:
+			option_check = 0;
 			if (option==1){
 				printf("Introdueix el missatge a enviar ('EXIT' per tancar el servidor i sortir): ");
 				fgets(cadena, BUFFER_SIZE, stdin);
@@ -142,10 +143,6 @@ int main(int argc, char *argv[]) {
                 }
 
 			snprintf(cadena, BUFFER_SIZE, "AUT:%d", contrasenya);
-			send(sock, cadena, strlen(cadena), 0);
-			memset(buffer, 0, BUFFER_SIZE);
-			recv(sock, buffer, BUFFER_SIZE,0);
-			printf("Resposta del servidor: %s\n", buffer);
 			break;
 
 		case 3:
@@ -165,10 +162,6 @@ int main(int argc, char *argv[]) {
             }
 
 			snprintf(cadena, BUFFER_SIZE, "SUMA:%d:%d", num1, num2);
-			send(sock, cadena, strlen(cadena), 0);
-			memset(buffer, 0, BUFFER_SIZE);
-			recv(sock, buffer, BUFFER_SIZE,0);
-			printf("Resposta del servidor: %s\n", buffer);
 			break;
 
 		case 4:
@@ -187,10 +180,6 @@ int main(int argc, char *argv[]) {
                 break;
             }
 			snprintf(cadena, BUFFER_SIZE, "RESTA:%d:%d", num1, num2);
-			send(sock, cadena, strlen(cadena), 0);
-			memset(buffer, 0, BUFFER_SIZE);
-			recv(sock, buffer, BUFFER_SIZE,0);
-			printf("Resposta del servidor: %s\n", buffer);
 			break;
 
 		case 5:
@@ -210,10 +199,6 @@ int main(int argc, char *argv[]) {
             }
 
 			snprintf(cadena, BUFFER_SIZE, "MUL:%d:%d", num1, num2);
-			send(sock, cadena, strlen(cadena), 0);
-			memset(buffer, 0, BUFFER_SIZE);
-			recv(sock, buffer, BUFFER_SIZE,0);
-			printf("Resposta del servidor: %s\n", buffer);
 			break;
 		case 6:			
             printf("Introdueix el primer número: ");
@@ -231,16 +216,20 @@ int main(int argc, char *argv[]) {
             }
 			
 			snprintf(cadena, BUFFER_SIZE, "DIV:%d:%d", num1, num2);
-			send(sock, cadena, strlen(cadena), 0);
-			memset(buffer, 0, BUFFER_SIZE);
-			recv(sock, buffer, BUFFER_SIZE,0);
-			printf("Resposta del servidor: %s\n", buffer);
 			break;
 
 		default:
 			printf("Opció invàlida\n");
+			option_check = 0;
 			break;
 		}
+		if(option_check == 1){
+			send(sock, cadena, strlen(cadena), 0);
+			memset(buffer, 0, BUFFER_SIZE);
+			recv(sock, buffer, BUFFER_SIZE,0);
+			printf("Resposta del servidor: %s\n", buffer);
+		}
+		
 	}
 
 	close(sock);
