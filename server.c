@@ -124,15 +124,15 @@ int main(int argc, char *argv[]) {
 
 			else if (autenticat == 1){
 				if(sscanf(buffer, "SUMA:%f:%f", &a, &b) == 2){
-					snprintf(reposta, BUFFER_SIZE, "Resultat: %f\n", a + b);
+					snprintf(reposta, BUFFER_SIZE, "Resultat: %.2f\n", a + b);
 					send(new_socket, reposta, strlen(reposta), 0);
 				}
 				else if(sscanf(buffer, "RESTA:%f:%f", &a, &b) == 2){
-					snprintf(reposta, BUFFER_SIZE, "Resultat: %f\n", a - b);
+					snprintf(reposta, BUFFER_SIZE, "Resultat: %.2f\n", a - b);
 					send(new_socket, reposta, strlen(reposta), 0);
 				}
 				else if(sscanf(buffer, "MUL:%f:%f", &a, &b) == 2){
-					snprintf(reposta, BUFFER_SIZE, "Resultat: %f\n", a * b);
+					snprintf(reposta, BUFFER_SIZE, "Resultat: %.2f\n", a * b);
 					send(new_socket, reposta, strlen(reposta), 0);
 				}
 				else if(sscanf(buffer, "DIV:%f:%f", &a, &b) == 2){
