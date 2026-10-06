@@ -101,7 +101,6 @@ int main(int argc, char *argv[]) {
 		{
 		case 1:
 		case 7:
-			option_check = 0;
 			if (option==1){
 				printf("Introdueix el missatge a enviar ('EXIT' per tancar el servidor i sortir): ");
 				fgets(cadena, BUFFER_SIZE, stdin);
@@ -114,21 +113,13 @@ int main(int argc, char *argv[]) {
 			// Afegiu control d'errors
 			// Afegiu comentari explicant els arguments
 
-			send(sock, cadena, strlen(cadena), 0);
 
 			// Llegir resposta del servidor
 			// Afegiu un control d'errors al recv()
 			// Afegiu comentari explicant què fa i per què s'utilitza memset
 			// Afegiu comentari explicant els arguments de la crida a recv()
 
-			memset(buffer, 0, BUFFER_SIZE);
-			recv(sock, buffer, BUFFER_SIZE,0);
-			printf("Resposta del servidor: %s\n", buffer);
 
-			if (strcmp(cadena, "EXIT") == 0) {
-				close(sock);
-				return 0;
-			}
 			break;
 
 		case 2:
@@ -139,6 +130,7 @@ int main(int argc, char *argv[]) {
 			if (scanf("%d", &contrasenya) != 1) {
                     printf("Error: Cal introduir una contrasenya numèrica.\n");
                     while (getchar() != '\n');
+					option_check = 0;
                     break;
                 }
 
@@ -151,6 +143,7 @@ int main(int argc, char *argv[]) {
             if (scanf("%d", &num1) != 1) {
                 printf("Error: Cal introduir un número enter.\n");
                 while (getchar() != '\n');
+				option_check = 0;
                 break;
             }
 
@@ -158,6 +151,7 @@ int main(int argc, char *argv[]) {
             if (scanf("%d", &num2) != 1) {
                 printf("Error: Cal introduir un número enter.\n");
                 while (getchar() != '\n');
+				option_check = 0;
                 break;
             }
 
@@ -170,6 +164,7 @@ int main(int argc, char *argv[]) {
             if (scanf("%d", &num1) != 1) {
                 printf("Error: Cal introduir un número enter.\n");
                 while (getchar() != '\n');
+				option_check = 0;
                 break;
             }
 
@@ -177,6 +172,7 @@ int main(int argc, char *argv[]) {
             if (scanf("%d", &num2) != 1) {
                 printf("Error: Cal introduir un número enter.\n");
                 while (getchar() != '\n');
+				option_check = 0;
                 break;
             }
 			snprintf(cadena, BUFFER_SIZE, "RESTA:%d:%d", num1, num2);
@@ -188,6 +184,7 @@ int main(int argc, char *argv[]) {
             if (scanf("%d", &num1) != 1) {
                 printf("Error: Cal introduir un número enter.\n");
                 while (getchar() != '\n');
+				option_check = 0;
                 break;
             }
 
@@ -195,6 +192,7 @@ int main(int argc, char *argv[]) {
             if (scanf("%d", &num2) != 1) {
                 printf("Error: Cal introduir un número enter.\n");
                 while (getchar() != '\n');
+				option_check = 0;
                 break;
             }
 
@@ -205,6 +203,7 @@ int main(int argc, char *argv[]) {
             if (scanf("%d", &num1) != 1) {
                 printf("Error: Cal introduir un número enter.\n");
                 while (getchar() != '\n');
+				option_check = 0;
                 break;
             }
 
@@ -212,6 +211,7 @@ int main(int argc, char *argv[]) {
             if (scanf("%d", &num2) != 1) {
                 printf("Error: Cal introduir un número enter.\n");
                 while (getchar() != '\n');
+				option_check = 0;
                 break;
             }
 			
@@ -228,6 +228,11 @@ int main(int argc, char *argv[]) {
 			memset(buffer, 0, BUFFER_SIZE);
 			recv(sock, buffer, BUFFER_SIZE,0);
 			printf("Resposta del servidor: %s\n", buffer);
+			if (strcmp(cadena, "EXIT") == 0) {
+				close(sock);
+				return 0;
+			}
+			break;
 		}
 		
 	}
