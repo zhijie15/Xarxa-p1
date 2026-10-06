@@ -80,7 +80,7 @@ int main(int argc, char *argv[]) {
 		// Afegiu comentari explicant els arguments i per què hi ha i cal new_socket si ja tenim sock
 		int clave_req; //clave de autenticació
 		int autenticat = 0; // variable per controlar si el client està autenticat o no
-		int a, b; // variables per a les operacions
+		float a, b; // variables per a les operacions
 		char reposta[BUFFER_SIZE];
 		if ((new_socket = accept(sock, (struct sockaddr *)&address, (socklen_t *)&addrlen)) < 0) {
 			perror("Error en acceptar la connexió");
@@ -123,23 +123,23 @@ int main(int argc, char *argv[]) {
 			}
 
 			else if (autenticat == 1){
-				if(sscanf(buffer, "SUMA:%d:%d", &a, &b) == 2){
-					snprintf(reposta, BUFFER_SIZE, "Resultat: %d\n", a + b);
+				if(sscanf(buffer, "SUMA:%f:%f", &a, &b) == 2){
+					snprintf(reposta, BUFFER_SIZE, "Resultat: %f\n", a + b);
 					send(new_socket, reposta, strlen(reposta), 0);
 				}
-				else if(sscanf(buffer, "RESTA:%d:%d", &a, &b) == 2){
-					snprintf(reposta, BUFFER_SIZE, "Resultat: %d\n", a - b);
+				else if(sscanf(buffer, "RESTA:%f:%f", &a, &b) == 2){
+					snprintf(reposta, BUFFER_SIZE, "Resultat: %f\n", a - b);
 					send(new_socket, reposta, strlen(reposta), 0);
 				}
-				else if(sscanf(buffer, "MUL:%d:%d", &a, &b) == 2){
-					snprintf(reposta, BUFFER_SIZE, "Resultat: %d\n", a * b);
+				else if(sscanf(buffer, "MUL:%f:%f", &a, &b) == 2){
+					snprintf(reposta, BUFFER_SIZE, "Resultat: %f\n", a * b);
 					send(new_socket, reposta, strlen(reposta), 0);
 				}
-				else if(sscanf(buffer, "DIV:%d:%d", &a, &b) == 2){
+				else if(sscanf(buffer, "DIV:%f:%f", &a, &b) == 2){
 					if(b == 0){
 						send(new_socket, "Error: Divisió per zero\n", strlen("Error: Divisió per zero\n"), 0);
 					} else {
-						snprintf(reposta, BUFFER_SIZE, "Resultat: %.2f\n", (float)a / b);
+						snprintf(reposta, BUFFER_SIZE, "Resultat: %.2f\n", a / b);
 						send(new_socket, reposta, strlen(reposta), 0);
 					}
 				}
@@ -150,7 +150,7 @@ int main(int argc, char *argv[]) {
 					send(new_socket, "Missatge rebut\n", strlen("Missatge rebut\n"), 0);
 				}
 			}
-			else if (autenticat == 0 && (sscanf(buffer, "SUMA:%d:%d", &a, &b) == 2 || sscanf(buffer, "RESTA:%d:%d", &a, &b) == 2 || sscanf(buffer, "MUL:%d:%d", &a, &b) == 2)) {
+			else if (autenticat == 0 && (sscanf(buffer, "SUMA:%f:%f", &a, &b) == 2 || sscanf(buffer, "RESTA:%f:%f", &a, &b) == 2 || sscanf(buffer, "MUL:%f:%f", &a, &b) == 2)) {
 				send(new_socket, "Error: No autenticat\n", strlen("Error: No autenticat\n"), 0);
 			}
 			else {

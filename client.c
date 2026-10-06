@@ -73,7 +73,7 @@ int main(int argc, char *argv[]) {
 	printf("Connectat al servidor. Podeu començar a enviar missatges.\n");
 
 	int option;
-	int num1, num2;
+	float num1, num2;
 
 	while (1) {
 		memset(buffer, 0, sizeof(buffer)); // Netegem el buffer
@@ -140,82 +140,82 @@ int main(int argc, char *argv[]) {
 		case 3:
 			// Implementar Opció 3		
             printf("Introdueix el primer número: ");
-            if (scanf("%d", &num1) != 1) {
-                printf("Error: Cal introduir un número enter.\n");
+            if (scanf("%f", &num1) != 1) {
+                printf("Error: Cal introduir un número.\n");
                 while (getchar() != '\n');
 				option_check = 0;
                 break;
             }
 
             printf("Introdueix el segon número: ");
-            if (scanf("%d", &num2) != 1) {
-                printf("Error: Cal introduir un número enter.\n");
+            if (scanf("%f", &num2) != 1) {
+                printf("Error: Cal introduir un número.\n");
                 while (getchar() != '\n');
 				option_check = 0;
                 break;
             }
 
-			snprintf(cadena, BUFFER_SIZE, "SUMA:%d:%d", num1, num2);
+			snprintf(cadena, BUFFER_SIZE, "SUMA:%.2f:%.2f", num1, num2);
 			break;
 
 		case 4:
 			// Implementar Opció 4
             printf("Introdueix el primer número: ");
-            if (scanf("%d", &num1) != 1) {
-                printf("Error: Cal introduir un número enter.\n");
+            if (scanf("%f", &num1) != 1) {
+                printf("Error: Cal introduir un número.\n");
                 while (getchar() != '\n');
 				option_check = 0;
                 break;
             }
 
             printf("Introdueix el segon número: ");
-            if (scanf("%d", &num2) != 1) {
-                printf("Error: Cal introduir un número enter.\n");
+            if (scanf("%f", &num2) != 1) {
+                printf("Error: Cal introduir un número.\n");
                 while (getchar() != '\n');
 				option_check = 0;
                 break;
             }
-			snprintf(cadena, BUFFER_SIZE, "RESTA:%d:%d", num1, num2);
+			snprintf(cadena, BUFFER_SIZE, "RESTA:%.2f:%.2f", num1, num2);
 			break;
 
 		case 5:
 			// Implementar Opció 5
             printf("Introdueix el primer número: ");
-            if (scanf("%d", &num1) != 1) {
-                printf("Error: Cal introduir un número enter.\n");
+            if (scanf("%f", &num1) != 1) {
+                printf("Error: Cal introduir un número.\n");
                 while (getchar() != '\n');
 				option_check = 0;
                 break;
             }
 
             printf("Introdueix el segon número: ");
-            if (scanf("%d", &num2) != 1) {
-                printf("Error: Cal introduir un número enter.\n");
+            if (scanf("%f", &num2) != 1) {
+                printf("Error: Cal introduir un número.\n");
                 while (getchar() != '\n');
 				option_check = 0;
                 break;
             }
 
-			snprintf(cadena, BUFFER_SIZE, "MUL:%d:%d", num1, num2);
+			snprintf(cadena, BUFFER_SIZE, "MUL:%.2f:%.2f", num1, num2);
 			break;
 		case 6:			
             printf("Introdueix el primer número: ");
-            if (scanf("%d", &num1) != 1) {
-                printf("Error: Cal introduir un número enter.\n");
+            if (scanf("%f", &num1) != 1) {
+                printf("Error: Cal introduir un número.\n");
                 while (getchar() != '\n');
 				option_check = 0;
                 break;
             }
 
             printf("Introdueix el segon número: ");
-            if (scanf("%d", &num2) != 1) {
-                printf("Error: Cal introduir un número enter.\n");
+            if (scanf("%f", &num2) != 1) {
+                printf("Error: Cal introduir un número.\n");
                 while (getchar() != '\n');
 				option_check = 0;
                 break;
             }
 			
-			snprintf(cadena, BUFFER_SIZE, "DIV:%d:%d", num1, num2);
+			snprintf(cadena, BUFFER_SIZE, "DIV:%.2f:%.2f", num1, num2);
 			break;
 
 		default:
